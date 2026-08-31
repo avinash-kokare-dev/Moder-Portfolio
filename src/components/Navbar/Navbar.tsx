@@ -154,18 +154,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className={styles.mobileMenuOverlay} onClick={() => setMobileMenuOpen(false)}>
           <div className={styles.mobileMenuContent} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.mobileMenuHeader}>
-              <span className={styles.mobileMenuTitle}>Navigation</span>
-              <button
-                type="button"
-                className={styles.closeDrawerBtn}
-                onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <X size={22} />
-              </button>
-            </div>
-
             <nav className={styles.mobileNav} aria-label="Mobile Navigation">
               <ul className={styles.mobileNavList}>
                 {navLinks.map((link) => (
@@ -184,10 +172,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div className={styles.mobileMenuFooter}>
               {/* Mobile Theme Toggle Row */}
-              <div className={styles.mobileThemeRow}>
-                <span className={styles.mobileThemeLabel}>Appearance</span>
-                <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-              </div>
+              
 
               <button
                 type="button"
@@ -203,7 +188,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <div className={styles.mobileSocials}>
                 <a
-                  href="https://github.com/avinash-kokare"
+                  href="https://github.com/avinash-kokare-dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.mobileSocialLink}
@@ -212,7 +197,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/avinash-kokare/"
+                  href="https://www.linkedin.com/in/avi-kokare"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.mobileSocialLink}
@@ -221,7 +206,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span>LinkedIn</span>
                 </a>
                 <a
-                  href="mailto:avknash114@gmail.com"
+                  href="mailto:avi1999kokare@gmail.com"
                   className={styles.mobileSocialLink}
                 >
                   <Mail size={17} />
