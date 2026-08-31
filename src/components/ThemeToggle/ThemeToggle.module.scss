@@ -1,0 +1,46 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.toggleButton {
+  @include flex-center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: $radius-pill;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.825rem;
+  font-weight: 500;
+  transition: all $transition-normal;
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+    background: var(--bg-surface-hover);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.iconContainer {
+  @include flex-center;
+  color: var(--accent-amber);
+}
+
+.sunIcon {
+  color: #f59e0b;
+  transition: transform $transition-spring;
+}
+
+.moonIcon {
+  color: #38bdf8;
+  transition: transform $transition-spring;
+}
+
+.toggleLabel {
+  display: inline-block;
+  white-space: nowrap;
+}

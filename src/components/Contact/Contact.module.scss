@@ -1,0 +1,442 @@
+@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
+
+.contactSection {
+  padding: 3.5rem 0;
+  background: var(--bg-app);
+  position: relative;
+
+  @include sm {
+    padding: 5rem 0;
+  }
+
+  @include lg {
+    padding: 6.5rem 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 800px;
+  margin-bottom: 2rem;
+
+  @include sm {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.badgeWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: $radius-pill;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 0.25rem;
+  width: fit-content;
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+}
+
+.badgeText {
+  font-family: $font-mono;
+  font-size: 0.775rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+}
+
+.sectionTitle {
+  font-family: $font-sans;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+
+  @include lg {
+    font-size: 2.6rem;
+  }
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 76ch;
+
+  @include sm {
+    font-size: 1.05rem;
+  }
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.channelsCard, .formCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-lg;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-glass);
+  box-sizing: border-box;
+
+  @include sm {
+    padding: 2rem;
+    gap: 1.75rem;
+  }
+
+  @include lg {
+    padding: 2.25rem;
+  }
+}
+
+.cardHeading {
+  font-family: $font-sans;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  @include sm {
+    font-size: 1.35rem;
+  }
+}
+
+.emailBox {
+  background: var(--bg-glass-inset);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-md;
+  padding: 1.15rem;
+  @include flex-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.emailInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.emailLabel {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.emailValue {
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  word-break: break-all;
+
+  @include sm {
+    font-size: 1.05rem;
+  }
+}
+
+.copyBtn {
+  @include flex-center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: $radius-sm;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-glass);
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all $transition-fast;
+  min-height: 42px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    background: var(--bg-glass-card-hover);
+    transform: translateY(-1px);
+  }
+
+  &.copied {
+    background: var(--accent-emerald);
+    border-color: var(--accent-emerald);
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+  }
+}
+
+.linksGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.channelLink {
+  background: var(--bg-glass-inset);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-md;
+  padding: 0.95rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all $transition-fast;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+  min-height: 52px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+
+  &:hover {
+    border-color: var(--border-glass-highlight);
+    background: var(--bg-glass-card-hover);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.linkIconBox {
+  @include flex-center;
+  width: 38px;
+  height: 38px;
+  border-radius: $radius-sm;
+  background: var(--bg-glass-card);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-glass);
+  flex-shrink: 0;
+}
+
+.linkMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.linkLabel {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.linkSub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  @include text-truncate;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.metaIcon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+// Form Card
+.formHeader {
+  @include flex-between;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 0.85rem;
+}
+
+.terminalIndicator {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.statusLive {
+  font-family: $font-mono;
+  font-size: 0.725rem;
+  color: var(--accent-emerald);
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.inputLabel {
+  font-family: $font-mono;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.textInput, .textArea {
+  background: var(--bg-glass-inset);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-sm;
+  padding: 0.85rem 1rem;
+  font-family: $font-body;
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all $transition-fast;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    background: var(--bg-glass-card);
+    box-shadow: 0 0 0 1px var(--accent-cyan), 0 0 16px rgba(56, 189, 248, 0.15);
+  }
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+.textArea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.submitBtn {
+  @include flex-center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: $radius-md;
+  background: var(--accent-cyan);
+  color: #ffffff;
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  min-height: 48px;
+  box-shadow: 0 4px 16px var(--accent-cyan-glow);
+
+  &:hover {
+    opacity: 0.94;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--accent-cyan-glow);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 0.5rem;
+}
+
+.successIconBox {
+  @include flex-center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
+}
+
+.successTitle {
+  font-family: $font-sans;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.successText {
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.resetBtn {
+  background: var(--bg-glass-inset);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glass);
+  padding: 0.6rem 1.15rem;
+  border-radius: $radius-sm;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-fast;
+  min-height: 42px;
+
+  &:hover {
+    background: var(--bg-glass-card-hover);
+    border-color: var(--border-glass-highlight);
+    transform: translateY(-1px);
+  }
+}

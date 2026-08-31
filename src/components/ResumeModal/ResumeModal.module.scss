@@ -1,0 +1,316 @@
+@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: $z-modal;
+  @include flex-center;
+  padding: 0.5rem;
+  overflow-y: auto;
+
+  @include sm {
+    padding: 1.5rem;
+  }
+}
+
+.modalContainer {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border-glass-highlight);
+  border-radius: $radius-lg;
+  width: 100%;
+  max-width: 840px;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-glass);
+  overflow: hidden;
+}
+
+.modalActionsBar {
+  @include flex-between;
+  padding: 0.85rem 1rem;
+  background: var(--bg-glass-inset);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-glass);
+  gap: 0.5rem;
+
+  @include sm {
+    padding: 0.85rem 1.25rem;
+    gap: 0.75rem;
+  }
+}
+
+.modalTitleBadge {
+  font-family: $font-mono;
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  @include text-truncate;
+}
+
+.actionsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actionBtn {
+  @include flex-center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: $radius-sm;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-glass);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all $transition-fast;
+  min-height: 36px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    background: var(--bg-glass-card-hover);
+    transform: translateY(-1px);
+  }
+}
+
+.closeBtn {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-glass-highlight);
+    background: var(--bg-glass-card-hover);
+  }
+}
+
+.documentBody {
+  padding: 1.25rem 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: transparent;
+  color: var(--text-primary);
+
+  @include sm {
+    padding: 2.25rem;
+    gap: 1.75rem;
+  }
+}
+
+.docHeader {
+  @include flex-between;
+  border-bottom: 1px solid var(--border-glass-highlight);
+  padding-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.candidateName {
+  font-family: $font-sans;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+
+  @include sm {
+    font-size: 1.85rem;
+  }
+}
+
+.candidateRole {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contactLine {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.docSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.docSectionTitle {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 0.35rem;
+}
+
+.summaryText {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.metricsSummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+
+  @include sm {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.resumeMetric {
+  background: var(--bg-glass-inset);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-glass);
+  padding: 0.65rem 0.85rem;
+  border-radius: $radius-sm;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+.rVal {
+  font-family: $font-mono;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+}
+
+.rLabel {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+.experienceStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.resumeExpItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.expHeaderRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @include sm {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.expTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.resumeRoleTitle {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.resumeCompany {
+  font-size: 0.825rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.resumePeriod {
+  font-family: $font-mono;
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+.resumeBulletList {
+  list-style: disc;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.resumeBullet {
+  font-size: 0.825rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.skillsSummaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.skillRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.825rem;
+  line-height: 1.5;
+
+  @include sm {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
+
+.skillCatName {
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.skillItemsText {
+  color: var(--text-secondary);
+}

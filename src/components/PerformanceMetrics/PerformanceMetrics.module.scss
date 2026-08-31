@@ -1,0 +1,861 @@
+@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
+
+.performanceSection {
+  padding: 3.5rem 0;
+  position: relative;
+  background: var(--bg-app);
+
+  @include sm {
+    padding: 5rem 0;
+  }
+
+  @include lg {
+    padding: 6.5rem 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
+  max-width: 820px;
+
+  @include sm {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.badgeWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: $radius-pill;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-glass);
+  margin-bottom: 0.85rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 8px var(--accent-emerald);
+}
+
+.badgeText {
+  font-family: $font-mono;
+  font-size: 0.775rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent-emerald);
+}
+
+.sectionTitle {
+  font-family: $font-sans;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+
+  @include lg {
+    font-size: 2.6rem;
+  }
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 76ch;
+
+  @include sm {
+    font-size: 1.05rem;
+  }
+}
+
+// Category Switcher Tabs (Mobile-responsive horizontal scroll)
+.tabsNavWrapper {
+  margin-bottom: 1.75rem;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+    border-radius: $radius-pill;
+  }
+}
+
+.tabsList {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  min-width: min-content;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: $radius-md;
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+  min-height: 44px;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background: var(--bg-glass-card-hover);
+    color: var(--text-primary);
+    border-color: var(--border-glass-highlight);
+    transform: translateY(-1px);
+  }
+
+  &.activeTab {
+    background: var(--bg-surface-elevated);
+    border-color: var(--accent-cyan);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 1px var(--accent-cyan), 0 8px 24px rgba(56, 189, 248, 0.15), inset 0 1px 0 var(--border-glass-highlight);
+
+    .tabIconBox {
+      background: var(--accent-cyan);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan-glow);
+    }
+  }
+}
+
+.tabIconBox {
+  @include flex-center;
+  width: 26px;
+  height: 26px;
+  border-radius: $radius-xs;
+  background: var(--bg-glass-inset);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  transition: all $transition-fast;
+}
+
+.tabLabel {
+  font-weight: 600;
+}
+
+// Main Stage Layout Grid
+.mainStageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  @include lg {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.75rem;
+  }
+}
+
+// Radar Chart Card
+.chartCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-lg;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-glass);
+  min-width: 0;
+  box-sizing: border-box;
+
+  @include sm {
+    padding: 1.75rem;
+  }
+}
+
+.chartHeader {
+  @include flex-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 1rem;
+}
+
+.chartTitleBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chartTitle {
+  font-family: $font-sans;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  @include sm {
+    font-size: 1.35rem;
+  }
+}
+
+.chartSubtitle {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+}
+
+.seriesToggles {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.seriesToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: $radius-pill;
+  font-family: $font-mono;
+  font-size: 0.725rem;
+  font-weight: 600;
+  background: var(--bg-glass-inset);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all $transition-fast;
+  min-height: 32px;
+
+  &:hover {
+    border-color: var(--border-glass-highlight);
+    color: var(--text-primary);
+  }
+
+  &.activeSeries {
+    color: var(--text-primary);
+    border-color: var(--series-color, var(--accent-cyan));
+    background: var(--bg-glass-card-hover);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+  }
+}
+
+.seriesDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--accent-cyan));
+}
+
+// Chart Render Stage
+.radarContainer {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  min-width: 0;
+
+  @include sm {
+    height: 380px;
+  }
+
+  @include md {
+    height: 420px;
+  }
+}
+
+// Custom Glassmorphic Tooltip
+.customTooltip {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-glass-highlight);
+  border-radius: $radius-md;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  font-family: $font-sans;
+  min-width: 220px;
+  max-width: 280px;
+  pointer-events: none;
+}
+
+.tooltipTitle {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 0.35rem;
+}
+
+.tooltipItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.tooltipLabel {
+  color: var(--text-secondary);
+}
+
+.tooltipValue {
+  font-family: $font-mono;
+  font-weight: 700;
+}
+
+.tooltipTechnique {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 0.4rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+// Side Info & Metric Cards Panel
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+// Summary KPI Grid
+.summaryKpiGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+
+  @include sm {
+    gap: 1rem;
+  }
+}
+
+.kpiCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-md;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-emerald), transparent);
+  }
+}
+
+.kpiValueRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.kpiValue {
+  font-family: $font-mono;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+
+  @include sm {
+    font-size: 1.6rem;
+  }
+}
+
+.kpiChangeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: $radius-xs;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
+}
+
+.kpiLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.kpiSublabel {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+// Active Metric Inspector Box
+.metricInspectorCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-lg;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-glass);
+  flex: 1;
+
+  @include sm {
+    padding: 1.5rem;
+  }
+}
+
+.inspectorHeader {
+  @include flex-between;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 0.85rem;
+}
+
+.inspectorTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metricBadge {
+  padding: 0.25rem 0.6rem;
+  border-radius: $radius-xs;
+  background: var(--accent-cyan);
+  color: #ffffff;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 800;
+  box-shadow: 0 0 10px var(--accent-cyan-glow);
+}
+
+.metricFullTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: $radius-pill;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
+}
+
+// Benchmark Comparison Bar
+.benchmarkComparison {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--bg-glass-inset);
+  padding: 0.85rem 1rem;
+  border-radius: $radius-md;
+  border: 1px solid var(--border-glass);
+}
+
+.comparisonRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.comparisonLabel {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.comparisonVal {
+  font-family: $font-mono;
+  font-weight: 700;
+}
+
+.techniqueBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.techniqueLabel {
+  font-family: $font-mono;
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.techniqueText {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.impactBox {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-glass-inset);
+  border-left: 2px solid var(--accent-emerald);
+  padding: 0.6rem 0.85rem;
+  border-radius: 0 $radius-xs $radius-xs 0;
+}
+
+// Interactive Metric Quick Select Chips
+.metricChipsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.metricChipBtn {
+  padding: 0.35rem 0.75rem;
+  border-radius: $radius-pill;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg-glass-inset);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all $transition-fast;
+  min-height: 32px;
+
+  &:hover {
+    background: var(--bg-glass-card-hover);
+    color: var(--text-primary);
+    border-color: var(--border-glass-highlight);
+  }
+
+  &.activeChip {
+    background: var(--accent-cyan);
+    color: #ffffff;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 12px var(--accent-cyan-glow);
+  }
+}
+
+// Six-Pack Web Vitals Audit Grid
+.vitalsSectionHeader {
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.vitalsSectionTitle {
+  font-family: $font-sans;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+.vitalsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.vitalCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-lg;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-glass);
+  transition: all $transition-normal;
+  min-width: 0;
+
+  &:hover {
+    border-color: var(--border-glass-highlight);
+    background: var(--bg-glass-card-hover);
+    box-shadow: var(--shadow-glass-hover);
+    transform: translateY(-2px);
+  }
+}
+
+.vitalCardHeader {
+  @include flex-between;
+  gap: 0.5rem;
+}
+
+.vitalAcronym {
+  font-family: $font-mono;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--accent-emerald);
+  letter-spacing: -0.02em;
+}
+
+.vitalRatingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: $radius-pill;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
+}
+
+.vitalName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.vitalScoreRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: var(--bg-glass-inset);
+  padding: 0.65rem 0.85rem;
+  border-radius: $radius-sm;
+  border: 1px solid var(--border-glass);
+}
+
+.vitalProdVal {
+  font-family: $font-mono;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.vitalThreshold {
+  font-family: $font-mono;
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+.vitalDesc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.vitalSolutionBox {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-glass);
+  padding-top: 0.65rem;
+
+  strong {
+    color: var(--accent-cyan);
+    font-weight: 600;
+  }
+}
+
+// Optimization Strategy Pillars
+.pillarsSectionHeader {
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pillarsTitle {
+  font-family: $font-sans;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillarCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-lg;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-glass);
+  min-width: 0;
+
+  @include sm {
+    padding: 1.5rem;
+  }
+}
+
+.pillarTagRow {
+  @include flex-between;
+  gap: 0.5rem;
+}
+
+.pillarTag {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: $radius-pill;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
+}
+
+.pillarTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.diffBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background: var(--bg-glass-inset);
+  padding: 0.85rem 1rem;
+  border-radius: $radius-md;
+  border: 1px solid var(--border-glass);
+}
+
+.diffItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.775rem;
+}
+
+.diffLabelBefore {
+  font-family: $font-mono;
+  font-size: 0.675rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  text-transform: uppercase;
+}
+
+.diffLabelAfter {
+  font-family: $font-mono;
+  font-size: 0.675rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  text-transform: uppercase;
+}
+
+.diffText {
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.pillarStrategy {
+  font-size: 0.825rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.pillarImpactRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--accent-emerald);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-glass);
+}

@@ -1,0 +1,380 @@
+@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
+
+.heroSection {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding-top: 5.5rem;
+  padding-bottom: 2rem;
+  overflow: hidden;
+
+  @include sm {
+    min-height: calc(100vh - 70px);
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
+  }
+
+  @include lg {
+    padding-top: 7.5rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  max-width: 860px;
+  width: 100%;
+
+  @include sm {
+    gap: 1.5rem;
+  }
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: $radius-pill;
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 0 var(--border-glass-highlight);
+  width: fit-content;
+  max-width: 100%;
+  font-family: $font-mono;
+  font-size: 0.775rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.4;
+
+  @include sm {
+    font-size: 0.825rem;
+    padding: 0.45rem 1.25rem;
+  }
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 10px var(--accent-emerald);
+  animation: statusPulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px var(--accent-emerald); }
+  50% { opacity: 0.5; transform: scale(0.85); box-shadow: 0 0 4px var(--accent-emerald); }
+}
+
+.statusText {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.statusDivider {
+  color: var(--border-strong);
+}
+
+.statusSub {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.engineerName {
+  font-family: $font-sans;
+  font-weight: 800;
+  font-size: 2.35rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  word-break: break-word;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+
+  @include xs {
+    font-size: 2.75rem;
+  }
+
+  @include sm {
+    font-size: 3.5rem;
+  }
+
+  @include lg {
+    font-size: 4.25rem;
+  }
+}
+
+.roleTagline {
+  font-family: $font-sans;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  letter-spacing: -0.01em;
+
+  @include sm {
+    font-size: 1.35rem;
+  }
+}
+
+.missionStatement {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  padding: 0 0.25rem;
+
+  strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  @include sm {
+    font-size: 1.1rem;
+  }
+}
+
+.ctaGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  width: 100%;
+  max-width: 480px;
+
+  @include xs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include sm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: none;
+    gap: 0.85rem;
+  }
+}
+
+.primaryCta {
+  @include flex-center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: $radius-md;
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  font-weight: 600;
+  font-size: 0.925rem;
+  transition: all $transition-normal;
+  min-height: 48px;
+  width: 100%;
+
+  @include sm {
+    width: auto;
+  }
+
+  &:hover {
+    opacity: 0.94;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px var(--accent-cyan-glow);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.secondaryCta, .resumeCta {
+  @include flex-center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: $radius-md;
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 0 var(--border-glass-highlight);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.925rem;
+  transition: all $transition-normal;
+  min-height: 48px;
+  width: 100%;
+
+  @include sm {
+    width: auto;
+  }
+
+  &:hover {
+    background: var(--bg-glass-card-hover);
+    border-color: var(--border-glass-highlight);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 var(--border-glass-highlight);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ghostCta {
+  @include flex-center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: $radius-md;
+  background: transparent;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.925rem;
+  font-weight: 600;
+  transition: all $transition-normal;
+  min-height: 48px;
+  width: 100%;
+
+  @include sm {
+    width: auto;
+  }
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-cyan);
+    background: var(--bg-glass-card);
+  }
+}
+
+// Hero Metrics Highlights
+.heroMetricsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 820px;
+  margin-top: 1.25rem;
+
+  @include sm {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.metricCard {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: $radius-lg;
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  box-shadow: var(--shadow-glass);
+  transition: all $transition-normal;
+
+  &:hover {
+    background: var(--bg-glass-card-hover);
+    border-color: var(--border-glass-highlight);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glass-hover);
+  }
+}
+
+.metricIconWrap {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-sm;
+  background: var(--bg-glass-inset);
+  border: 1px solid var(--border-glass);
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.metricData {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.metricValue {
+  font-family: $font-mono;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.metricLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.techPillars {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-glass);
+  width: 100%;
+
+  @include sm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+.pillarItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.775rem;
+  color: var(--text-secondary);
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  padding: 0.45rem 0.95rem;
+  border-radius: $radius-pill;
+  width: 100%;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+
+  @include sm {
+    width: fit-content;
+  }
+}
+
+.pillarIcon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
