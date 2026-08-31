@@ -177,10 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 className={styles.mobileResumeBtn}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenResume();
-                }}
+                onClick={() => handleDownload()}
               >
                 <FileText size={16} />
                 <span>View Full Resume</span>
